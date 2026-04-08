@@ -22,5 +22,5 @@ app.use("/api/user",userRouter)
 
 app.listen(port,()=>{
   connectDb()
-  console.log("server started")
+  console.log("server started") 
 })
