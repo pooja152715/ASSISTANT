@@ -9,7 +9,7 @@ dotenv.config()
 
 const app=express()
 app.use(cors({
-  origin: ["http://localhost:5173/", "https://assistant-frontend-lc3f.onrender.com"],
+  origin: ["http://localhost:5173/", "https://your-frontend.vercel.app/"],
   credentials: true
 }));
 const port=process.env.PORT || 5000
