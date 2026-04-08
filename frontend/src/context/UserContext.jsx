@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react"
 
 export const userDataContext=createContext()
 function UserContext({children}){
-    const serverUrl="https://assistant-backend-rnun.onrender.com"
+    const serverUrl="https://your-backend.vercel.app/api"
     const [userData,setUserData]=useState(null)
         const [frontendImage, setFrontendImage] = useState(null)
         const [backendImage, setBackendImage] = useState(null)
