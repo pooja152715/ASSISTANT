@@ -9,7 +9,7 @@ dotenv.config()
 
 const app=express()
 app.use(cors({
-  origin:"https://assistant-frontend-lc3f.onrender.com",
+  origin:"http://localhost:5173",
   credentials:true
 }))
 const port=process.env.PORT || 5000
