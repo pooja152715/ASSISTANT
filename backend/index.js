@@ -9,9 +9,9 @@ dotenv.config()
 
 const app=express()
 app.use(cors({
-  origin:"http://localhost:5173",
-  credentials:true
-}))
+  origin: [" http://localhost:5173/", "https://assistant-frontend-lc3f.onrender.com"],
+  credentials: true
+}));
 const port=process.env.PORT || 5000
 app.use(express.json())
 app.use(cookieParser())
