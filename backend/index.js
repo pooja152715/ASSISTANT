@@ -2,11 +2,15 @@ import cookieParser from 'cookie-parser'
 import cors from "cors"
 import dotenv from 'dotenv'
 import express from 'express'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import connectDb from './config/db.js'
 import authRouter from './routes/auth.routes.js'
 import userRouter from './routes/user.routes.js'
 
-dotenv.config()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+dotenv.config({ path: path.join(__dirname, '.env') })
 
 console.log("MONGODB_URL:", process.env.MONGODB_URL)
 
@@ -31,7 +35,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.options(/.*/, cors(corsOptions))  // ✅ preflight uses same config
+app.options(/.*/, cors(corsOptions))
 
 const port = process.env.PORT || 5000
 
