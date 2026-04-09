@@ -8,6 +8,8 @@ import userRouter from './routes/user.routes.js'
 
 dotenv.config()
 
+console.log("MONGODB_URL:", process.env.MONGODB_URL)
+
 const app = express()
 
 const allowedOrigins = [
