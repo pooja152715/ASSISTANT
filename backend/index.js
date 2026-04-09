@@ -15,7 +15,7 @@ const allowedOrigins = [
   "https://assistant-8xz7.vercel.app"
 ]
 
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true)
@@ -26,10 +26,10 @@ app.use(cors({
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
-}))
+}
 
-// ✅ Handle preflight
-app.options(/.*/, cors())
+app.use(cors(corsOptions))
+app.options(/.*/, cors(corsOptions))  // ✅ preflight uses same config
 
 const port = process.env.PORT || 5000
 
