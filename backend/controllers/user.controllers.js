@@ -1,10 +1,13 @@
 import moment from "moment/moment.js"
 import uploadOnCloudinary from "../config/cloudinary.js"
+import connectDb from "../config/db.js"
 import geminiResponse from "../gemini.js"
 import User from '../models/user.model.js'
 
+
 export const getCurrentUser = async (req, res) => {
     try {
+        await connectDb()
         const userId = req.userId
         const user = await User.findById(userId).select("-password")
         if (!user) {
@@ -18,6 +21,7 @@ export const getCurrentUser = async (req, res) => {
 
 export const updateAssistant = async (req, res) => { 
     try {
+                await connectDb()
         const { assistantName, imageUrl } = req.body
         let assistantImage;
         if (req.file) {
@@ -41,6 +45,7 @@ export const updateAssistant = async (req, res) => {
 
 export const askToAssistant=async(req,res)=>{
     try {
+                await connectDb()
     const {command}=req.body
     const user=await User.findById(req.userId);
     //user.history.push(command)
